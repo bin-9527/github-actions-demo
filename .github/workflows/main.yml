@@ -1,2 +1,14 @@
 name: learn-github-action
 on: [push]
+jobs:
+  checkout-bats-version1: # job_id
+    name: checkout-version1-name # job_id.name
+    runs-on: ubuntu-latest # job_id.runs-on
+    steps:
+      - uses: actions/checkout@v1 # 检出代码
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g bats # 执行命令
+      - run: bats -v
+
