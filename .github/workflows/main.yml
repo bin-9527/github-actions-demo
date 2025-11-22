@@ -1,8 +1,22 @@
-name: learn-github-action
-on: [push]
-jobs:
-  checkout-bats-version1: # job_id
-    name: checkout-version1-name # job_id.name
+name: learn-github-action #工作流的名称
+on: [push] #工作流里的任务什么时候被执行
+# concurrency: 3 # 工作流里的最大任务数量
+jobs: #工作流里的任务集合
+  checkout-bats-version1: # 作业的id
+    name: checkout-version1-name # 当前作业id的名称。如果你只配置里job_id，那么平台会认为作业的id、name是一样的。
+    runs-on: ubuntu-latest # 定义运行job时的计算机类型。其实就相当于指定服务器的运行系统。
+    steps: # 完成id为job_id的任务，需要执行的步骤集合。
+    # uses 用于获取你上传的代码。
+      - uses: actions/checkout@v1 # 检出代码
+      - uses: actions/setup-node@v3 # 安装node
+        with:
+          node-version: '14'
+      # run 执行shell命令，相当于node里的child_process。
+      - run: npm install -g bats # 执行命令
+      - run: bats -
+  # 第二个工作
+  checkout-bats-version2: # job_id
+    name: checkout-version2-name # job_id.name
     runs-on: ubuntu-latest # job_id.runs-on
     steps:
       - uses: actions/checkout@v1 # 检出代码
