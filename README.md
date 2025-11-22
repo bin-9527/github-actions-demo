@@ -2,6 +2,7 @@
 
 一个工作流，就是一个yaml文件，就是一个可以执行具体命令的容器
 工作流之间默认的工作方式是并发。
+上下文参考：https://docs.github.com/zh/actions/reference/workflows-and-actions/contexts
 作业有哪些配置？
 配置	说明	是否必输
 jobs.job_id	作业的id	是
