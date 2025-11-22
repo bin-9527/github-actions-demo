@@ -13,7 +13,7 @@ jobs: #工作流里的任务集合
           node-version: '14'
       # run 执行shell命令，相当于node里的child_process。
       - run: npm install -g bats # 执行命令
-      - run: bats -
+      - run: bats -v
   # 第二个工作
   checkout-bats-version2: # job_id
     name: checkout-version2-name # job_id.name
